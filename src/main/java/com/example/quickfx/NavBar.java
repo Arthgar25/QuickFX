@@ -14,9 +14,9 @@ public class NavBar extends HBox {
     private final TextField searchField;
     private final HBox actionsBox;
     private final QuickButton themeToggleButton;
-    private final Button weekView = null;
-    private final Button calendarView = null;
-    private final Button dayView = null;
+    private final QuickButton weekView;
+    private final QuickButton calendarView;
+    private final QuickButton dayView;
 
     private boolean isDarkMode = true;
 
@@ -35,6 +35,21 @@ public class NavBar extends HBox {
         this.searchField.setPromptText("Search...");
         this.searchField.setStyle("-fx-background-color: #3c3c3c; -fx-text-fill: #ffffff; -fx-prompt-text-fill: #888888; -fx-background-radius: 4px;");
         this.searchField.setPrefWidth(220);
+
+        this.weekView = new QuickButton("Week") {
+            @Override
+            protected void addAction() {}
+        };
+
+        this.dayView = new QuickButton("Day") {
+            @Override
+            protected void addAction() {}
+        };
+
+        this.calendarView = new QuickButton("Calendar") {
+            @Override
+            protected void addAction() {}
+        };
 
         // --- 4. Spacer ---
         // Pushes everything after it to the far right
@@ -56,7 +71,9 @@ public class NavBar extends HBox {
         // --- 7. Assemble Children ---
         this.getChildren().addAll(
                 titleLabel,
-                searchField,
+                dayView,
+                weekView,
+                calendarView,
                 spacer,
                 actionsBox,
                 themeToggleButton
