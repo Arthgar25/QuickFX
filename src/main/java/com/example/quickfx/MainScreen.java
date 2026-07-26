@@ -8,17 +8,19 @@ public abstract class MainScreen extends BorderPane {
         this.setStyle("-fx-background-color: white;");
 
         this.setTop(buildNavBar());
+        this.setLeft(buildSideBar());
         buildUI();
     }
     protected abstract void buildUI();
 
     private Node buildNavBar() {
-        NavBar navBar = new NavBar("test");
+        NavBar navBar = new NavBar("Atlas");
         return navBar;
     }
 
     private Node buildSideBar() {
-        return null;
+        SideBar sideBar = new SideBar();
+        return sideBar;
     }
 
 

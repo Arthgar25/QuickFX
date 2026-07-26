@@ -13,7 +13,10 @@ public class NavBar extends HBox {
     private final Label titleLabel;
     private final TextField searchField;
     private final HBox actionsBox;
-    private final Button themeToggleButton;
+    private final QuickButton themeToggleButton;
+    private final Button weekView = null;
+    private final Button calendarView = null;
+    private final Button dayView = null;
 
     private boolean isDarkMode = true;
 
@@ -27,7 +30,7 @@ public class NavBar extends HBox {
         this.titleLabel = new Label(appTitle);
         this.titleLabel.setStyle("-fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-font-weight: bold;");
 
-        // --- 3. Search Bar ---
+        // --- 3. Functions ---
         this.searchField = new TextField();
         this.searchField.setPromptText("Search...");
         this.searchField.setStyle("-fx-background-color: #3c3c3c; -fx-text-fill: #ffffff; -fx-prompt-text-fill: #888888; -fx-background-radius: 4px;");
@@ -43,9 +46,12 @@ public class NavBar extends HBox {
         this.actionsBox.setAlignment(Pos.CENTER);
 
         // --- 6. Theme Toggle Button ---
-        this.themeToggleButton = new Button("🌙");
-        this.themeToggleButton.setStyle("-fx-background-color: #333333; -fx-text-fill: #ffffff; -fx-cursor: hand; -fx-background-radius: 4px;");
-        this.themeToggleButton.setOnAction(e -> toggleTheme());
+        this.themeToggleButton = new QuickButton("🌙") {
+            @Override
+            protected void addAction() {
+                setOnAction(event -> toggleTheme());
+            }
+        };
 
         // --- 7. Assemble Children ---
         this.getChildren().addAll(
